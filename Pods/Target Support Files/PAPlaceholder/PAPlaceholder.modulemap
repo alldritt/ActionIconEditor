@@ -1,0 +1,6 @@
+framework module PAPlaceholder {
+  umbrella header "PAPlaceholder-umbrella.h"
+
+  export *
+  module * { export * }
+}
