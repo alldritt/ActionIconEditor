@@ -118,26 +118,19 @@ class PaletteView: UIView {
             let colorIndex = self.colorIndex(at: sender.location(in: self))
             pressedColorIndex = colorIndex
             firstPressedColorIndex = colorIndex
-            print("began: \(colorIndex)")
 
         case .changed:
             let colorIndex = self.colorIndex(at: sender.location(in: self))
             pressedColorIndex = colorIndex == firstPressedColorIndex ? colorIndex : nil
-            print("changed: \(colorIndex)")
 
-        case .ended:
+        case .ended,
+             .cancelled,
+             .failed:
             let colorIndex = self.colorIndex(at: sender.location(in: self))
             if colorIndex == firstPressedColorIndex {
                 color = ActionKit.colors[colorIndex]
             }
             pressedColorIndex = nil
-            print("ended: \(colorIndex)")
-
-        case .cancelled:
-            print("cancelled")
-
-        case .failed:
-            print("failed")
             
         default:
             break

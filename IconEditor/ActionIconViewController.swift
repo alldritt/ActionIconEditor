@@ -17,6 +17,7 @@ class ActionIconViewController: UIViewController {
         didSet {
             previewView.action = action
             (viewControllers[0] as! ActionIconColorViewController).action = action
+            (viewControllers[1] as! ActionIconGlyphViewController).action = action
             
             if let actionObserver = actionObserver {
                 NotificationCenter.default.removeObserver(actionObserver)
@@ -39,20 +40,21 @@ class ActionIconViewController: UIViewController {
     private var bottomView = UIView()
     private var segmentedControl = UISegmentedControl()
     fileprivate let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-    fileprivate let viewControllers: [UIViewController] = [ActionIconColorViewController(), UIViewController()]
+    fileprivate let viewControllers: [UIViewController] = [ActionIconColorViewController(), ActionIconGlyphViewController()]
     fileprivate var selectedIndex: Int = 0
 
     deinit {
+        #if DEBUG
+        print("deinit ActionIconViewController")
+        #endif
         action = nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewControllers[1].view.backgroundColor = .blue
-        
-        //  Prevent swipe-down dismissal
-        isModalInPresentation = true
+        //  Allow swipe-down dismissal
+        isModalInPresentation = false
 
         navigationItem.title = "Icon"
         navigationController?.toolbar.isOpaque = true
@@ -60,6 +62,7 @@ class ActionIconViewController: UIViewController {
         
         previewView.action = action
         (viewControllers[0] as! ActionIconColorViewController).action = action
+        (viewControllers[1] as! ActionIconGlyphViewController).action = action
 
         topView.backgroundColor = .secondarySystemBackground
         topView.addSubview(previewView)
@@ -124,14 +127,15 @@ class ActionIconViewController: UIViewController {
         if segmentedControl.selectedSegmentIndex > selectedIndex {
             let nextIndex = selectedIndex + 1
             for index in nextIndex...segmentedControl.selectedSegmentIndex {
-                self.setViewController(atIndex: index, direction: .forward)
+                setViewController(atIndex: index, direction: .forward)
             }
         } else if segmentedControl.selectedSegmentIndex < selectedIndex {
             let previousIndex = selectedIndex - 1
             for index in (segmentedControl.selectedSegmentIndex...previousIndex).reversed() {
-                self.setViewController(atIndex: index, direction: .reverse)
+                setViewController(atIndex: index, direction: .reverse)
             }
         }
+        self.selectedIndex = segmentedControl.selectedSegmentIndex
     }
 
     private func setViewController(atIndex index: Int, direction: UIPageViewController.NavigationDirection) {
@@ -160,6 +164,12 @@ class ActionIconColorViewController: UIViewController {
     }
     var paletteView: PaletteView!
     
+    deinit {
+        #if DEBUG
+        print("deinit ActionIconColorViewController")
+        #endif
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -183,4 +193,247 @@ class ActionIconColorViewController: UIViewController {
         
         paletteView.frame = frame
     }
+}
+
+
+class ActionGlyphCell: UICollectionViewCell {
+    var swatchView : UIImageView
+    
+    override init(frame: CGRect) {
+        swatchView = UIImageView(frame: CGRect(origin: CGPoint.zero, size: frame.size).insetBy(dx: 8, dy: 8))
+        swatchView.tintColor = .systemGray
+        swatchView.contentMode = .scaleAspectFit
+        
+        super.init(frame: frame)
+        
+        contentView.addSubview(swatchView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    var glyphName: String = "" {
+        didSet {
+            swatchView.image = UIImage(systemName: glyphName)
+        }
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            guard isSelected != oldValue else { return }
+            
+            if isSelected {
+                contentView.layer.backgroundColor = UIColor.secondarySystemFill.cgColor
+                contentView.layer.cornerRadius = 8
+                contentView.layer.masksToBounds = true
+            }
+            else {
+                contentView.layer.backgroundColor = UIColor.clear.cgColor
+            }
+        }
+    }
+}
+
+
+extension ActionKit {
+    
+    class GlyphPalette {
+        public let name : String
+        public let palette : [String]
+        
+        public init(name: String, palette: [String]) {
+            self.name = name
+            self.palette = palette
+        }
+    }
+
+}
+
+class ActionIconGlyphViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate {
+        
+    public var palettes: [ActionKit.GlyphPalette] = [] {
+        didSet {
+            glyphsView.reloadData()
+        }
+    }
+
+    var action: ActionKit.Action? {
+        didSet {
+            if isViewLoaded {
+                glyphsView.selectItem(at: glyphIndexPath(), animated: false, scrollPosition: .centeredHorizontally)
+            }
+        }
+    }
+    var glyphsView: UICollectionView!
+    var tabBar: UITabBar!
+    
+    deinit {
+        #if DEBUG
+        print("deinit ActionIconGlyphViewController")
+        #endif
+    }
+
+    private func glyphIndexPath() -> IndexPath? {
+        guard let action = action else { return nil }
+        
+        for (i, p) in palettes.enumerated() {
+            if let index = p.palette.firstIndex(of: action.iconName) {
+                return IndexPath(row: index, section: i)
+            }
+        }
+        return nil
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        guard let symbolsURL = Bundle.main.url(forResource: "SFSymbols", withExtension: "json") else { fatalError("SFSymbols.json missing") }
+        guard let symbolsData = try? Data(contentsOf: symbolsURL) else { fatalError("cannot read SFSymbols.json") }
+        guard let symbols = try? JSONSerialization.jsonObject(with: symbolsData, options: []) as? [String:[String]] else { fatalError("error reading SFSymbols.json") }
+
+        tabBar = UITabBar()
+        tabBar.isTranslucent = false
+        tabBar.itemPositioning = .centered
+        tabBar.delegate = self
+        
+        tabBar.items = [UITabBarItem(title: "Digits", image: UIImage(systemName: "1.square"), tag: 0),
+                        UITabBarItem(title: "Letters", image: UIImage(systemName: "a.square"), tag: 1),
+                        UITabBarItem(title: "Objects", image: UIImage(systemName: "cube.fill"), tag: 2),
+                        UITabBarItem(title: "People", image: UIImage(systemName: "person.fill"), tag: 3),
+                        UITabBarItem(title: "Symbols", image: UIImage(systemName: "slider.horizontal.3"), tag: 4)]
+        view.addSubview(tabBar)
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        layout.itemSize = CGSize(width: 45, height: 45)
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 5
+        layout.scrollDirection = .horizontal
+
+        glyphsView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        glyphsView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        glyphsView.translatesAutoresizingMaskIntoConstraints = false
+        glyphsView.showsHorizontalScrollIndicator = true
+        glyphsView.showsVerticalScrollIndicator = false
+        glyphsView.backgroundColor = .clear
+        glyphsView.allowsSelection = true
+        glyphsView.allowsMultipleSelection = false
+        glyphsView.register(ActionGlyphCell.self, forCellWithReuseIdentifier: "glyph")
+        glyphsView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+        glyphsView.delegate = self
+        glyphsView.dataSource = self
+        view.addSubview(glyphsView)
+                
+        palettes = [ActionKit.GlyphPalette(name: "Digits", palette: symbols["numbers"] ?? []),
+                    ActionKit.GlyphPalette(name: "Letters", palette: symbols["letters"] ?? []),
+                    ActionKit.GlyphPalette(name: "Objects", palette: symbols["objects"] ?? []),
+                    ActionKit.GlyphPalette(name: "People", palette: symbols["people"] ?? []),
+                    ActionKit.GlyphPalette(name: "Symbols", palette: symbols["other"] ?? [])]
+        glyphsView.layoutIfNeeded()
+        glyphsView.selectItem(at: glyphIndexPath(), animated: false, scrollPosition: .centeredHorizontally)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let tabBarHeight = CGFloat(53)
+        let area = view.bounds.inset(by: view.safeAreaInsets)
+        
+        glyphsView.frame = CGRect(x: 0, y: 0, width:  area.width, height: area.height - tabBarHeight)
+        tabBar.frame = CGRect(x: 0, y: area.height - tabBarHeight, width: area.width, height: tabBarHeight)
+        
+        if let selectedIndexPath = glyphsView.indexPathsForSelectedItems?.first {
+            glyphsView.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: false)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
+    //  UICollectionViewDelegate
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let palette = palettes[indexPath.section].palette
+        let glyphName = palette[indexPath.row]
+
+        action?.iconName = glyphName
+        //baseRow.baseValue = newColor
+        //swatchView.color = newColor
+    }
+
+    //  UIScrollViewDelegate
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let indexPath = glyphsView.indexPathsForVisibleItems.first else { return }
+        
+        tabBar.selectedItem = tabBar.items?.first(where: { (item) in
+            return item.tag == indexPath.section
+        })
+    }
+    //  UICollectionViewDataSource
+    
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return palettes.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let palette = palettes[section].palette
+        
+        return palette.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "glyph", for: indexPath) as! ActionGlyphCell
+        let palette = palettes[indexPath.section].palette
+        let glyphName = palette[indexPath.row]
+        
+        cell.glyphName = glyphName
+        return cell
+    }
+    
+    /*
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath)
+        
+        if v.subviews.count == 0 {
+            let label = UILabel(frame: CGRect(x: -36.0, y: 40.0, width: 96.0, height: 16.0))
+            
+            label.font = UIFont.systemFont(ofSize: 11.0)
+            label.textAlignment = .center
+            if #available(iOS 13.0, *) {
+                label.textColor = UIColor.label
+                label.backgroundColor = UIColor.systemGroupedBackground
+
+            } else {
+                label.textColor = UIColor.black
+                label.backgroundColor = UIColor.init(white: 0.9, alpha: 1.0)
+            }
+            label.transform = CGAffineTransform(rotationAngle: (-90.0 * CGFloat.pi) / 180.0)
+            label.layer.masksToBounds = true
+            label.layer.cornerRadius = 8.0
+            label.tag = 1234
+            
+            v.addSubview(label)
+        }
+        
+        if let label = v.viewWithTag(1234) as? UILabel {
+            label.text = palettes[indexPath.section].name
+        }
+        
+        return v
+    }
+    */
+    
+    //  UITabBarDelegate
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        glyphsView.scrollToItem(at: IndexPath(item: 0, section: item.tag), at: .left, animated: true)
+    }
+
 }

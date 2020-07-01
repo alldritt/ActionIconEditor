@@ -12,6 +12,8 @@ import Eureka
 
 class ViewController: EurekaFormViewController {
     
+    var action = ActionKit.Action(name: "Hello World", subtitle: "")
+
     override func viewDidLoad() {
         tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -29,6 +31,7 @@ class ViewController: EurekaFormViewController {
                                                                             actionHandler: { (button) in
                                                                                 vc.dismiss(animated: true)
                     })
+                    vc.action = self.action
                     
                     let nvc = UINavigationController(rootViewController: vc)
                     

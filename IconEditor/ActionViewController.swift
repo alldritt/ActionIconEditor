@@ -12,7 +12,7 @@ import Eureka
 
 class ActionViewController: EurekaFormViewController {
 
-    var action: ActionKit.Action? = ActionKit.Action(name: "Hello World", subtitle: "") {
+    var action: ActionKit.Action? {
         didSet {
             if let actionObserver = actionObserver {
                 NotificationCenter.default.removeObserver(actionObserver)
@@ -23,15 +23,17 @@ class ActionViewController: EurekaFormViewController {
                                                                         object: action,
                                                                         queue: nil,
                                                                         using: { [unowned self] (notification) in
+                                                                            guard !self.editingAction else { return }
                                                                             self.form.rowBy(tag: "name")?.reload()
                 })
             }
         }
     }
     
+    private var editingAction = false
     private var actionObserver: NSObjectProtocol?
     
-    let shortcutIconSize = CGFloat(60)
+    let shortcutIconSize = CGFloat(70)
     lazy var tapRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(shortcutIconTapped(sender:)))
         
@@ -40,6 +42,9 @@ class ActionViewController: EurekaFormViewController {
     }()
     
     deinit {
+        #if DEBUG
+        print("deinit ActionViewController")
+        #endif
         action = nil
     }
     
@@ -60,6 +65,12 @@ class ActionViewController: EurekaFormViewController {
             <<< NameRow("name") { (row) in
                 row.placeholder = "Shortcut Name"
                 row.value = action?.name
+            }
+            .onChange { [unowned self] (row) in
+                guard let newValue = row.value else { return }
+                self.editingAction = true
+                self.action?.name = newValue
+                self.editingAction = false
             }
             .cellSetup { [unowned self] (cell, row) in
                 cell.height = { return self.shortcutIconSize }
