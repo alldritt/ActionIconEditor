@@ -3,27 +3,50 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50595EB24A079A1009B0978 /* EurekaExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50595EA24A079A1009B0978 /* EurekaExtras.swift */; };
+		A51CF94A24AC281200CDEA73 /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51CF94924AC281200CDEA73 /* PaletteView.swift */; };
+		A51CF94C24AC370100CDEA73 /* ActionKitAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51CF94B24AC370100CDEA73 /* ActionKitAction.swift */; };
+		A52D5C5824A10992000353FE /* ActionKitPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D5C5724A10992000353FE /* ActionKitPreviewView.swift */; };
 		A54D3E4724A04C0F00ACAA24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D3E4624A04C0F00ACAA24 /* AppDelegate.swift */; };
-		A54D3E4924A04C0F00ACAA24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D3E4824A04C0F00ACAA24 /* SceneDelegate.swift */; };
 		A54D3E4B24A04C0F00ACAA24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D3E4A24A04C0F00ACAA24 /* ViewController.swift */; };
 		A54D3E4E24A04C0F00ACAA24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54D3E4C24A04C0F00ACAA24 /* Main.storyboard */; };
 		A54D3E5024A04C1000ACAA24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A54D3E4F24A04C1000ACAA24 /* Assets.xcassets */; };
 		A54D3E5324A04C1000ACAA24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54D3E5124A04C1000ACAA24 /* LaunchScreen.storyboard */; };
+		A54D3E5B24A04C3900ACAA24 /* ActionKitColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D3E5A24A04C3900ACAA24 /* ActionKitColors.swift */; };
+		A54D3E5D24A04E6300ACAA24 /* ActionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D3E5C24A04E6300ACAA24 /* ActionKit.swift */; };
+		A596228724A07EA500A5C130 /* ActionKitStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596228624A07EA500A5C130 /* ActionKitStyleKit.swift */; };
+		A596228924A094EE00A5C130 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596228824A094EE00A5C130 /* ActionViewController.swift */; };
+		A596228B24A0968900A5C130 /* ActionIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596228A24A0968900A5C130 /* ActionIconViewController.swift */; };
+		A596228D24A0974500A5C130 /* LNSBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596228C24A0974500A5C130 /* LNSBarButtonItem.swift */; };
+		DB939D13E31DB92D1817CD3E /* Pods_IconEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2CBC7FE42AF4957A4338B1 /* Pods_IconEditor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B2CBC7FE42AF4957A4338B1 /* Pods_IconEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IconEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		208F4929EE058395DDC30132 /* Pods-IconEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconEditor.debug.xcconfig"; path = "Target Support Files/Pods-IconEditor/Pods-IconEditor.debug.xcconfig"; sourceTree = "<group>"; };
+		A50595EA24A079A1009B0978 /* EurekaExtras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaExtras.swift; sourceTree = "<group>"; };
+		A51CF94924AC281200CDEA73 /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
+		A51CF94B24AC370100CDEA73 /* ActionKitAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKitAction.swift; sourceTree = "<group>"; };
+		A52D5C5724A10992000353FE /* ActionKitPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKitPreviewView.swift; sourceTree = "<group>"; };
+		A52D5C5924A10F24000353FE /* SFSymbols.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SFSymbols.json; sourceTree = "<group>"; };
 		A54D3E4324A04C0F00ACAA24 /* IconEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IconEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54D3E4624A04C0F00ACAA24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A54D3E4824A04C0F00ACAA24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A54D3E4A24A04C0F00ACAA24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A54D3E4D24A04C0F00ACAA24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A54D3E4F24A04C1000ACAA24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A54D3E5224A04C1000ACAA24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A54D3E5424A04C1000ACAA24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A54D3E5A24A04C3900ACAA24 /* ActionKitColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKitColors.swift; sourceTree = "<group>"; };
+		A54D3E5C24A04E6300ACAA24 /* ActionKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKit.swift; sourceTree = "<group>"; };
+		A596228624A07EA500A5C130 /* ActionKitStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionKitStyleKit.swift; sourceTree = "<group>"; };
+		A596228824A094EE00A5C130 /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		A596228A24A0968900A5C130 /* ActionIconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionIconViewController.swift; sourceTree = "<group>"; };
+		A596228C24A0974500A5C130 /* LNSBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNSBarButtonItem.swift; sourceTree = "<group>"; };
+		E5EEC2FF6AC47A817D6806A2 /* Pods-IconEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IconEditor.release.xcconfig"; path = "Target Support Files/Pods-IconEditor/Pods-IconEditor.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +54,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB939D13E31DB92D1817CD3E /* Pods_IconEditor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7958FD235229AA960DEE00BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				208F4929EE058395DDC30132 /* Pods-IconEditor.debug.xcconfig */,
+				E5EEC2FF6AC47A817D6806A2 /* Pods-IconEditor.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A54D3E3A24A04C0F00ACAA24 = {
 			isa = PBXGroup;
 			children = (
 				A54D3E4524A04C0F00ACAA24 /* IconEditor */,
 				A54D3E4424A04C0F00ACAA24 /* Products */,
+				7958FD235229AA960DEE00BE /* Pods */,
+				BC9FF3D6D3212FCE793FD240 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +92,32 @@
 			isa = PBXGroup;
 			children = (
 				A54D3E4624A04C0F00ACAA24 /* AppDelegate.swift */,
-				A54D3E4824A04C0F00ACAA24 /* SceneDelegate.swift */,
 				A54D3E4A24A04C0F00ACAA24 /* ViewController.swift */,
+				A596228824A094EE00A5C130 /* ActionViewController.swift */,
+				A596228A24A0968900A5C130 /* ActionIconViewController.swift */,
+				A51CF94924AC281200CDEA73 /* PaletteView.swift */,
 				A54D3E4C24A04C0F00ACAA24 /* Main.storyboard */,
 				A54D3E4F24A04C1000ACAA24 /* Assets.xcassets */,
 				A54D3E5124A04C1000ACAA24 /* LaunchScreen.storyboard */,
 				A54D3E5424A04C1000ACAA24 /* Info.plist */,
+				A54D3E5C24A04E6300ACAA24 /* ActionKit.swift */,
+				A51CF94B24AC370100CDEA73 /* ActionKitAction.swift */,
+				A54D3E5A24A04C3900ACAA24 /* ActionKitColors.swift */,
+				A52D5C5724A10992000353FE /* ActionKitPreviewView.swift */,
+				A596228624A07EA500A5C130 /* ActionKitStyleKit.swift */,
+				A50595EA24A079A1009B0978 /* EurekaExtras.swift */,
+				A596228C24A0974500A5C130 /* LNSBarButtonItem.swift */,
+				A52D5C5924A10F24000353FE /* SFSymbols.json */,
 			);
 			path = IconEditor;
+			sourceTree = "<group>";
+		};
+		BC9FF3D6D3212FCE793FD240 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B2CBC7FE42AF4957A4338B1 /* Pods_IconEditor.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A54D3E5724A04C1000ACAA24 /* Build configuration list for PBXNativeTarget "IconEditor" */;
 			buildPhases = (
+				2336595B81E8486546B0C536 /* [CP] Check Pods Manifest.lock */,
 				A54D3E3F24A04C0F00ACAA24 /* Sources */,
 				A54D3E4024A04C0F00ACAA24 /* Frameworks */,
 				A54D3E4124A04C0F00ACAA24 /* Resources */,
+				07FB40AF9264F4FD5473F8F0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,6 +188,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07FB40AF9264F4FD5473F8F0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IconEditor/Pods-IconEditor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IconEditor/Pods-IconEditor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IconEditor/Pods-IconEditor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2336595B81E8486546B0C536 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IconEditor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A54D3E3F24A04C0F00ACAA24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,7 +237,16 @@
 			files = (
 				A54D3E4B24A04C0F00ACAA24 /* ViewController.swift in Sources */,
 				A54D3E4724A04C0F00ACAA24 /* AppDelegate.swift in Sources */,
-				A54D3E4924A04C0F00ACAA24 /* SceneDelegate.swift in Sources */,
+				A54D3E5B24A04C3900ACAA24 /* ActionKitColors.swift in Sources */,
+				A596228724A07EA500A5C130 /* ActionKitStyleKit.swift in Sources */,
+				A51CF94C24AC370100CDEA73 /* ActionKitAction.swift in Sources */,
+				A52D5C5824A10992000353FE /* ActionKitPreviewView.swift in Sources */,
+				A54D3E5D24A04E6300ACAA24 /* ActionKit.swift in Sources */,
+				A50595EB24A079A1009B0978 /* EurekaExtras.swift in Sources */,
+				A51CF94A24AC281200CDEA73 /* PaletteView.swift in Sources */,
+				A596228924A094EE00A5C130 /* ActionViewController.swift in Sources */,
+				A596228B24A0968900A5C130 /* ActionIconViewController.swift in Sources */,
+				A596228D24A0974500A5C130 /* LNSBarButtonItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,11 +388,13 @@
 		};
 		A54D3E5824A04C1000ACAA24 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 208F4929EE058395DDC30132 /* Pods-IconEditor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z7S6X96M3X;
 				INFOPLIST_FILE = IconEditor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +408,13 @@
 		};
 		A54D3E5924A04C1000ACAA24 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5EEC2FF6AC47A817D6806A2 /* Pods-IconEditor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z7S6X96M3X;
 				INFOPLIST_FILE = IconEditor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
