@@ -32,7 +32,7 @@
 		A50595EA24A079A1009B0978 /* EurekaExtras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaExtras.swift; sourceTree = "<group>"; };
 		A51CF94924AC281200CDEA73 /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
 		A51CF94B24AC370100CDEA73 /* ActionKitAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKitAction.swift; sourceTree = "<group>"; };
-		A51CF94D24AD369100CDEA73 /* SFSymbols.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = SFSymbols.json; path = ../../SFSymbols.json; sourceTree = "<group>"; };
+		A51CF94D24AD369100CDEA73 /* SFSymbols.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SFSymbols.json; sourceTree = "<group>"; };
 		A52D5C5724A10992000353FE /* ActionKitPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKitPreviewView.swift; sourceTree = "<group>"; };
 		A54D3E4324A04C0F00ACAA24 /* IconEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IconEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54D3E4624A04C0F00ACAA24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Mark Alldritt";
 				TargetAttributes = {
 					A54D3E4224A04C0F00ACAA24 = {
@@ -300,6 +300,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -360,6 +361,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

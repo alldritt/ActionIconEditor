@@ -1,5 +1,5 @@
 PODS:
-  - Eureka (5.2.1)
+  - Eureka (5.3.2)
   - PAPlaceholder (0.3)
 
 DEPENDENCIES:
@@ -12,9 +12,9 @@ SPEC REPOS:
     - PAPlaceholder
 
 SPEC CHECKSUMS:
-  Eureka: c883105488e05bc65539f583246ecf9657cabbfe
+  Eureka: 1c2b8b5892bfb0e972d0fe05f8c09fd89f8625ec
   PAPlaceholder: 89a973dce2f9eb110cf8f2675c78b8c3063c046e
 
 PODFILE CHECKSUM: 35aa1d73934fb2520ca56af82c43b78993d85b14
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3
